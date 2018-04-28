@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.intendia</groupId>
+    <artifactId>java10-gwt</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>gwt-app</packaging>
+
+    <url>https://github.com/ibaca/java10-gwt/</url>
+
+    <properties>
+        <maven.compiler.source>1.10</maven.compiler.source>
+        <maven.compiler.target>1.10</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <github.global.server>github</github.global.server>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt</artifactId>
+                <version>HEAD-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>6.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.intendia.gwt</groupId>
+            <artifactId>rxjava2-gwt</artifactId>
+            <version>2.1.2-beta1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>1.0-rc-9</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <moduleName>java10.Java10</moduleName>
+                    <skipModule>true</skipModule>
+                    <failOnError>true</failOnError>
+                    <devmodeArgs><!-- @formatter:off -->
+                        <arg>-bindAddress</arg><arg>0.0.0.0</arg>
+                        <arg>-style</arg><arg>PRETTY</arg>
+                    </devmodeArgs><!-- @formatter:on -->
+                    <startupUrls>
+                        <url>/java10/</url>
+                    </startupUrls>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>rxjava-gwt-repo</id>
+            <url>https://raw.githubusercontent.com/intendia-oss/rxjava-gwt/mvn-repo/</url>
+        </repository>
+        <repository>
+            <id>google-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
+        </repository>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
+</project>
